@@ -1,3 +1,4 @@
+'use client'
 
 // nuxt 최적화된 이미지 삽입하기
 import Image from "next/image"
@@ -5,9 +6,11 @@ import Image from "next/image"
 import food0 from '/public/food0.png';
 import food1 from '/public/food1.png';
 import food2 from '/public/food2.png';
+import { useState } from "react";
 
 export default function List() {
-    let 상품 = ['Tomatoes', 'Pasta', 'Coconut']
+    let 상품 = ['Tomatoes', 'Pasta', 'Coconut'];
+    let [수량, 수량변경] = useState(0);
     return (
     <div>
         <h2 className="title">Products</h2>
@@ -21,6 +24,8 @@ export default function List() {
                     {/* <Image src={food0} alt="#" className="food-img" width={100} height={100} /> */}
                     <img src={`/food${i}.png`} alt="#"  className="food-img"  />
                     <h4>{a} $40</h4>
+                    <span>{수량}</span>
+                    <button onClick={()=>{수량변경(수량+1)}}> + </button>
                 </div>
                 )
             })

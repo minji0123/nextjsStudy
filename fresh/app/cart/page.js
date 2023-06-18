@@ -1,13 +1,34 @@
 'use client'
 export default function Cart() {
+    let 장바구니 = ['Tomatoes','Pasta'];
     return (
         <div>
             <h4 className="title">Cart</h4>
-            <CartItem/>
-            <CartItem/>
+
+{
+    장바구니.map((a,i)=>{
+        console.log(a);
+        return(
+            <CartItem 상품명={a} />
+        )
+
+    })
+}
         </div>
     )
 } 
+
+
+function CartItem(props){
+    return(
+        <div className="cart-item">
+            <p>상품명 {props.상품명}</p>
+            <p>$40</p>
+            <p>1개</p>
+        </div>
+    )
+}
+
 /*
 next js 컴포넌트는 종류가 두개임
 1. server component
@@ -27,13 +48,10 @@ onClick 못씀... useState, useEffect 도 못씀
 큰 페이지 안의 작은 기능들은 클라로 (버튼, 모달 등등)
 
 */
-
-function CartItem(){
-    return(
-        <div className="cart-item">
-            <p>상품명</p>
-            <p>$40</p>
-            <p>1개</p>
-        </div>
-    )
-}
+/**
+ * deduplication
+ * next js 에서는
+    부모 > 자식 에서
+    똑같은 데이터 요청이 여러개면
+    1개로 압축해줌
+ */
